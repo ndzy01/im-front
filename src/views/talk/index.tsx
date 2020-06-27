@@ -55,7 +55,7 @@ const Talk = connect(
   const onFinish = (values: any) => {
     const message = values.message;
     const user = props.User.user;
-    api('/im/save', 'POST', { username: values.username, message });
+    api('/im/save', 'POST', { username: props.User.user, message });
     socket.emit('messages', { user, message });
     form.resetFields();
   };
@@ -116,7 +116,7 @@ const Talk = connect(
                   </div>
                 </Col>
                 <Col span={6}>
-                  <span style={{fontSize:"6px"}}>{message.time}</span>
+                  <span style={{ fontSize: '6px' }}>{message.time}</span>
                 </Col>
               </Row>
             </div>
