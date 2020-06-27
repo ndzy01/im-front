@@ -100,20 +100,25 @@ const Talk = connect(
           }
           return (
             <div className={cn} key={index}>
-              <div className="talk-show-message">
-                <span
-                  className={
-                    message.role === '0'
-                      ? 'talk-show-message-user-yes'
-                      : 'talk-show-message-user-no'
-                  }
-                >
-                  {message.user}:
-                </span>
-                <span>{message.message}</span>
-              </div>
-
-              <span>{message.time}</span>
+              <Row>
+                <Col span={18}>
+                  <div className="talk-show-message">
+                    <span
+                      className={
+                        message.role === '0'
+                          ? 'talk-show-message-user-yes'
+                          : 'talk-show-message-user-no'
+                      }
+                    >
+                      {message.user}:
+                    </span>
+                    <span>{message.message}</span>
+                  </div>
+                </Col>
+                <Col span={6}>
+                  <span style={{fontSize:"6px"}}>{message.time}</span>
+                </Col>
+              </Row>
             </div>
           );
         })}
@@ -121,7 +126,7 @@ const Talk = connect(
       <div className="talk-content">
         <Form name="talk_from" form={form} onFinish={onFinish}>
           <Row>
-            <Col span={22}>
+            <Col span={20}>
               <Form.Item
                 name="message"
                 rules={[{ required: true, message: '还没有输入任何内容！' }]}
@@ -129,7 +134,7 @@ const Talk = connect(
                 <Input placeholder="请输入" />
               </Form.Item>
             </Col>
-            <Col span={2} style={{ textAlign: 'center' }}>
+            <Col span={4} style={{ textAlign: 'center' }}>
               <Form.Item>
                 <Button
                   type="primary"

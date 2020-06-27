@@ -22,7 +22,7 @@ const LoginForm = connect((state) => state, { setUserName })((props: any) => {
   };
   const checkPassword = (rule: any, val: any, callback: any) => {
     if (!val) {
-      callback();
+      callback('请输入密码！');
     }
     if (val !== 'ndzy') {
       callback('密码错误！');
@@ -48,7 +48,7 @@ const LoginForm = connect((state) => state, { setUserName })((props: any) => {
       <Form.Item
         name="password"
         rules={[
-          { required: true, message: '请输入密码！', validator: checkPassword },
+          { required: true, validator: checkPassword },
         ]}
       >
         <Input
